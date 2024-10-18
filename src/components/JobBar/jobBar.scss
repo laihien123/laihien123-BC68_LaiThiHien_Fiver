@@ -2,6 +2,37 @@
 @import "../../styles/helpers/variable";
 
 .job_bar {
-  font-family: "macan-regular";
-  color: $dark-gray;
+   font-family: "macan-regular";
+   color: $dark-gray;
+
+   .categories {
+      position: relative;
+      padding: 0 10px;
+
+      &:first-child {
+         padding: 0 10px 0 0;
+      }
+      &:last-child {
+         padding: 0 0 0 10px;
+      }
+      .dropdown-content {
+         position: absolute;
+         z-index: 10; // Đảm bảo nội dung không bị che khuất
+         width: 250px;
+         border: 1px solid #ccc; // Thêm viền cho dễ thấy
+         background-color: white;
+         opacity: 0; // Bắt đầu với opacity 0
+         transition: opacity 0.3s; // Thêm hiệu ứng chuyển đổi
+
+         &.visible {
+            // Thêm lớp visible để hiển thị
+            opacity: 1;
+            pointer-events: auto; // Cho phép tương tác
+         }
+
+         &.hidden {
+            pointer-events: none; // Ngăn tương tác khi ẩn
+         }
+      }
+   }
 }
